@@ -79,21 +79,6 @@ def obtainCompanyData(ticker):
 
     return cInfo_url
 
-def getTickerFromName(company):
-    import requests
-    import json
-    url1 = "http://d.yimg.com/autoc.finance.yahoo.com/autoc?query="+company+"&region=1&lang=en&callback=YAHOO.Finance.SymbolSuggest.ssCallback"
-    company_req = requests.get(url1)
-
-    try:
-        company_data_string = company_req._content.decode()
-        json_data_start_index = company_data_string.find('"Result":[{')+9
-        company_data = json.loads(company_req._content.decode()[json_data_start_index:-4])
-        cTicker = company_data[0]['symbol']
-    except Exception as e:
-        cTicker = "Invalid Company name."
-    
-    return cTicker
 
 def stockSearch(ticker,company):
     import requests
@@ -120,28 +105,40 @@ def stockSearch(ticker,company):
         return api
 
     elif ticker == "":
-        companyTicker = getTickerFromName(company)
-        url2 = "https://cloud.iexapis.com/stable/stock/"+companyTicker+"/quote?token=pk_8ffc6e63445e477fa4c225e7f9a30694"
-        api_req = requests.get(url2)
+        url1 = "http://d.yimg.com/autoc.finance.yahoo.com/autoc?query="+company+"&region=1&lang=en&callback=YAHOO.Finance.SymbolSuggest.ssCallback"
+        company_req = requests.get(url1)
+
         try:
-            api = json.loads(api_req._content)
-            logo = obtainLogo(companyTicker)
-            api['customLogo'] = logo['url']
+            company_data_string = company_req._content.decode()
+            json_data_start_index = company_data_string.find('"Result":[{')+9
+            company_data = json.loads(company_req._content.decode()[json_data_start_index:-4])
+            companyTicker = company_data[0]['symbol']
 
-            ytdChg = api['ytdChange']
-            api['ytdChange'] = float(round(ytdChg*100,2))
+            url2 = "https://cloud.iexapis.com/stable/stock/"+companyTicker+"/quote?token=pk_8ffc6e63445e477fa4c225e7f9a30694"
+            api_req = requests.get(url2)
+            try:
+                api = json.loads(api_req._content)
+                logo = obtainLogo(companyTicker)
+                api['customLogo'] = logo['url']
 
-            mktCap = api['marketCap']
-            api['marketCap'] = str("{:,}".format(mktCap))
+                ytdChg = api['ytdChange']
+                api['ytdChange'] = float(round(ytdChg*100,2))
 
-            avgVol = api["avgTotalVolume"]
-            api["avgTotalVolume"] = str("{:,}".format(avgVol))
+                mktCap = api['marketCap']
+                api['marketCap'] = str("{:,}".format(mktCap))
+
+                avgVol = api["avgTotalVolume"]
+                api["avgTotalVolume"] = str("{:,}".format(avgVol))
+
+            except Exception as e:
+                api = "Invalid Ticker"
+                
+            return api
 
         except Exception as e:
-            api = "Invalid Ticker"
-            
+            api = "Invalid Company name."
+        
         return api
-
 
 
 def home(request):
@@ -152,21 +149,13 @@ def home(request):
         ticker = request.POST['ticker']
         company = request.POST['company']
         api = stockSearch(ticker,company)
+        cInfo = obtainCompanyData(ticker)
 
-        if ticker == "":
-            cInfo = obtainCompanyData(getTickerFromName(company))
-            if cInfo != "Company Info Unavailable":
-                ceoName = cInfo['CEO']
-                cInfo['customCEO'] = ceoName.replace(" ","_")
-            else:
-                messages.error(request, f'{cInfo}')
-        elif company == "":
-            cInfo = obtainCompanyData(ticker)
-            if cInfo != "Company Info Unavailable":
-                ceoName = cInfo['CEO']
-                cInfo['customCEO'] = ceoName.replace(" ","_")
-            else:
-                messages.error(request, f'{cInfo}')
+        if cInfo != "Company Info Unavailable":
+            ceoName = cInfo['CEO']
+            cInfo['customCEO'] = ceoName.replace(" ","_")
+        else:
+            messages.error(request, f'{cInfo}')
         
         if api == "Invalid Ticker":
             messages.error(request, f'{api}')

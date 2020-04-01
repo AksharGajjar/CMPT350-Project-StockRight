@@ -13,6 +13,24 @@
         h6 {
             color: #0c2375;
         }
+        .author{
+            color:white;
+        }
+        .made_by{
+            color: #0175F2;
+        }
+        .copyright-text{
+            color:white;
+        }
+        .text-justify{
+            color: white;
+        }
+        .about{
+            color: #0175F2;
+        }
+        .site-footer{
+        background-color: #131722;
+        }
     </style>
 
     <head>
@@ -27,10 +45,6 @@
         <link rel="stylesheet" href="{% static 'css/font-icons.css' %}">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-        <link rel="apple-touch-icon" sizes="72x72" href="{% static 'img/apple-touch-icon-72x72.png' %}">
-        <link rel="apple-touch-icon" sizes="114x114" href="{% static 'img/apple-touch-icon-114x114.png' %}">
-
-        <script src="{% static 'js/lazysizes.min.js' %}"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -38,7 +52,7 @@
         <title>StockRight</title>
     </head>
 
-    <body style="background-color:#0C0E15; min-height: max-content;">
+    <body style="background-color:#0C0E15;">
         {% url 'home' as h_url %}
         {% url 'news' as n_url %}
         {% if request.get_full_path == h_url %}
@@ -80,12 +94,17 @@
 
         <!-- Navigation Bar -->
         <nav class="navbar navbar-expand-lg navbar-dark" style=" background-color:#0c2375; z-index:1000;">
-            <a class="navbar-brand" href="{% url 'home' %}"  style="color:#FFFFFF;"><strong>StockRight</strong></a>
+            <a href="{% url 'home' %}"><img class="img-responsive2" src="{% static 'img/logo1.png' %}" style="width: 80px;height: 80px;"></a>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="ture" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}"  style="color:#FFFFFF;"><strong>Home</strong></a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'myStocks' %}" style="color:#FFFFFF;">Portfolio</a>
                     </li>
@@ -129,40 +148,24 @@
 
         {% block content %} {% endblock %}
         </div>
-
         <script src="{% static 'js/jquery.min.js' %}"></script>
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
-        <script src="{% static 'js/owl-carousel.min.js' %}"></script>
-        <script src="{% static 'js/flickity.pkgd.min.js' %}"></script>
-        <script src="{% static 'js/twitterFetcher_min.js' %}"></script>
-        <script src="{% static 'js/jquery.newsTicker.min.js' %}"></script>
-        <script src="{% static 'js/modernizr.min.js' %}"></script>
-        <script src="{% static 'js/scripts.js' %}"></script>
-        <script src="{% static 'js/easing.min.js' %}"></script>
-
-        
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
-   
-    <br/>
-    <br/>
-    <br/>
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <!-- Site footer -->
-    <footer class="site-footer" style="background-color: #131722;">
+    <footer class="site-footer" style="">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <br/>
-                <h6 style="color: #0175F2;">About</h6>
-                <p style="color: white;"class="text-justify">
-                    Short Project Description and Motivation
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa veritatis nostrum amet unde similique laboriosam? Ad, laborum. 
-                    Repellendus omnis, sapiente eos quod maxime perferendis minus! Dolore, nostrum accusantium est quisquam, 
-                    quam obcaecati incidunt dolor nemo voluptatem, consequuntur explicabo dolorem. 
-                    Dolore dignissimos eius odio iure.
+                <h6 class="about">About</h6>
+                <p class="text-justify">
+                    StockRight is a website that provides live prices, historical data, news articles, etc
+                    It allows users to create an account which allows them to add stocks to thier watchlist and view additional information about the stock.
                 </p>
             </div>
             <div class="col-sm-12 col-md-6" style="text-align: right;">
@@ -171,8 +174,8 @@
                 <br/>
                 <br/>
                 
-                <h3 style="color: #0175F2;">Made By</h3>
-                <h4 style="color:white;">Akshar Gajjar & Rohan Patel</h4>
+                <h3 class="made_by">Made By</h3>
+                <h4 class="author">Akshar Gajjar & Rohan Patel</h4>
             </div>
         </div>
         <hr>
@@ -180,7 +183,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-6 col-xs-12">
-                <p style="color: white;"class="copyright-text">Copyright &copy; 2020</p>
+                <p class="copyright-text">Copyright &copy; 2020</p>
             </div>
         </div>
     </div>
