@@ -57,17 +57,7 @@ It allows users to create an account which allows them to add stocks to thier wa
 - Viewing the most trending shares on that particular day
 
 
-## Contributing
-
-Feel free to fork this repository and enhance whatever you want, just show the world how you code, think and do magic with your keyboard.
-
-    1. Fork it 
-    2. Create your feature branch (`git checkout -b feature/xxxxx`)
-    3. Commit your changes (`git commit -am 'Add some xxxxx'`)
-    4. Push to the branch (`git push origin feature/xxxxx`)
-    5. Create a new Pull Request
-
 ## Credits
 
+[Akshar Gajjar](https://github.com/aksharg) - akshargajjar.bk@gmail.com / ang399@usask.ca  
 [Rohan Patel](https://github.com/rohanpatel711) - rohanspatel711711@gmail.com / rsp502@usask.ca  
-[Akshar Gajjar](https://github.com/aksharg) - akshargajjar.bk@gmail.com / ang399@usask.ca
