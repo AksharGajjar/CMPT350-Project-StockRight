@@ -20,19 +20,51 @@ It allows users to create an account which allows them to add stocks to thier wa
 
 ####      Packages Required:
 
-    virtualenv
-    flask
-    requests
-    bs4
-    django
-    post
-    pandas
-    json
     ajax
+    appdirs
+    asgiref
+    astroid
+    beautifulsoup4
+    certifi
+    crypto
+    decorator
+    distlib
+    Django
     dj-database-url
     django-jquery
-    django-staticfiles
-    get
+    django-widget-tweaks
+    djangorestframework
+    djangorestframework-simplejwt
+    filelock
+    Flask
+    Flask-SocketIO
+    json
+    itsdangerous
+    Jinja2==2.10
+    lazy-object-proxy
+    lxml
+    MarkupSafe
+    pandas
+    pbr
+    PyJWT
+    pylint
+    pylint-django
+    pylint-plugin-utils
+    python-engineio
+    python-socketio
+    pytz
+    PyYAML
+    request
+    simplejson
+    sqlparse
+    urllib3
+    virtualenv
+    virtualenv-clone
+    virtualenvwrapper
+    Werkzeug
+
+
+
     
 # API's 
     
