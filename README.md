@@ -59,5 +59,5 @@ It allows users to create an account which allows them to add stocks to thier wa
 
 ## Credits
 
-[Akshar Gajjar](https://github.com/aksharg) - akshargajjar.bk@gmail.com / ang399@usask.ca
+[Akshar Gajjar](https://github.com/aksharg) - akshargajjar.bk@gmail.com / ang399@usask.ca  
 [Rohan Patel](https://github.com/rohanpatel711) - rohanspatel711711@gmail.com / rsp502@usask.ca  
