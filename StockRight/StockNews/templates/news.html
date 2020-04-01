@@ -1,0 +1,130 @@
+{% extends 'base.html' %} {% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/font-icons.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<style>
+    div.trending-now {
+        background-color: #131722;
+    }
+    span.trending-now__label {
+        background-color: #0C2375;
+    }
+    button.newsticker-button {
+        background-color: #131722;
+    }
+    i.ui-arrow-left {
+        color: white;
+    }
+    i.ui-arrow-right {
+        color: white;
+    }
+    button.newsticker-button:hover {
+        background-color: #0C2375;
+    }
+    a.newsticker__item-url {
+        color: white;
+    }
+    article.entry {
+        width: auto; 
+        height: 200px;
+        background-color: #131722;
+    }
+    div.entry__img-holder {
+        background-size: cover;
+    }
+    div.entry__body {
+        background-color: #131722;
+    }
+    h2.entry__title {
+        color: white;
+    }
+    h2.entry__title:hover {
+        color: #0C2375;
+    }
+    a.entry__meta-category {
+        background-color: #0C2375;
+    }
+    a.entry__meta-category:hover {
+        background-color: #0C0E15;
+    }
+    #a_title:hover {
+        color: #0C2375;
+    }
+    #author {
+        color:#83858F;
+    }
+    #author:hover {
+        color:#0C2375;
+    }
+</style>
+
+
+<div class="container">
+    <div class="trending-now">
+                <span class="trending-now__label">
+                    <i class="ui-flash"></i>
+                    <span class="trending-now__text d-lg-inline-block d-none">Newsflash</span>
+                </span>
+        <div class="newsticker">
+            <ul id="newsticker__list" class="newsticker__list">
+                {% for idx in api.data %}
+                <li class="newsticker__item">
+                    <a href = {{idx.news_url}} class="newsticker__item-url">{{idx.title}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="newsticker-buttons">
+            <button class="newsticker-button newsticker-button--prev" id="newsticker-button--prev" aria-label="next article"><i class="ui-arrow-left"></i></button>
+            <button class="newsticker-button newsticker-button--next" id="newsticker-button--next" aria-label="previous article"><i class="ui-arrow-right"></i></button>
+        </div>
+    </div>
+</div>
+<section class="featured-posts-grid">
+    <div class="container">
+        <div class="row row-8">
+            {% for idx in api.data %}
+            <div class="col-lg-6">
+                <div class="featured-posts-grid__item featured-posts-grid__item--sm">
+                    <article class="entry card post-list featured-posts-grid__entry">
+                        <div class="entry__img-holder post-list__img-holder card__img-holder" style="background-image: url({{idx.image_url}});">
+                            <a href= {{idx.news_url}} class="thumb-url"></a>
+                            <img src= {{idx.image_url}} alt="" class="entry__img d-none">
+                            <a href="{{idx.news_url}}" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner" target="_blank">{{idx.type}}</a>
+                        </div>
+                        <div class="entry__body post-list__body card__body">
+                            <h2 class="entry__title">
+                                <a id="a_title" href= {{idx.news_url}} >{{idx.title}}</a>
+                            </h2>
+                            <ul class="entry__meta">
+                                <li class="entry__meta-author">
+                                    <span>by</span>
+                                    <a id="author" href="{{idx.news_url}}" target="_blank">{{idx.source_name}}</a>
+                                </li>
+                                <li class="entry__meta-date">
+                                    {{idx.date}}
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/owl-carousel.min.js' %}"></script>
+<script src="{% static 'js/flickity.pkgd.min.js' %}"></script>
+<script src="{% static 'js/twitterFetcher_min.js' %}"></script>
+<script src="{% static 'js/jquery.newsTicker.min.js' %}"></script>
+<script src="{% static 'js/modernizr.min.js' %}"></script>
+<script src="{% static 'js/scripts.js' %}"></script>
+<script src="{% static 'js/easing.min.js' %}"></script>
+
+{% endblock %}
