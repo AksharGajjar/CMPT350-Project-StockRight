@@ -87,9 +87,10 @@ It allows users to create an account which allows them to add stocks to thier wa
      1. $ git clone https://github.com/aksharg/CMPT350-Project-StockRight.git
      2. $ cd CMPT350-Project-StockRight/
      3. $ source venv/Scripts/activate
-     4. $ cd StockRight/
-     5. $ python manage.py runserver
-     6. Open a browser(Chrome, Firefox, Safari, Edge) and type http://localhost:8000 in the address bar
+     4. $ pip install -r dependencies.txt
+     5. $ cd StockRight/
+     6. $ python manage.py runserver
+     7. Open a browser(Chrome, Firefox, Safari, Edge) and type http://localhost:8000 in the address bar
 
 # Features of the Web-App: 
 
@@ -99,7 +100,6 @@ It allows users to create an account which allows them to add stocks to thier wa
 - Querying the current price of some share
 - Tabular representation of current shares
 - Viewing the most trending shares on that particular day
-
 - Browsing Trending, Live News
 - Getting current stock quotes 
 - In-depth company financials such as valuation, price history, dividends, balance sheets, etc.
