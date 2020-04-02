@@ -80,10 +80,12 @@
 
         <!-- Navigation Bar -->
         <nav class="navbar navbar-expand-lg navbar-dark" style=" background-color:#0c2375; z-index:1000;">
-            <a class="navbar-brand" href="{% url 'home' %}"  style="color:#FFFFFF;"><strong>StockRight</strong></a>
+            <a href="{% url 'home' %}"><img class="img-responsive2" src="{% static 'img/logo1.png' %}" style="width: 80px;height: 80px;"></a>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="ture" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            &nbsp;&nbsp;
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">

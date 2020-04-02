@@ -5,6 +5,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.conf import settings
 
 # IEX Publishable API Token: pk_8ffc6e63445e477fa4c225e7f9a30694 
 # WTD Token (For Indices): lFxr8LrnAm6SsyOVrYZ7Z7Q4G4TOCAeGx6ikjFCCexwcbu8J6zuCOvUys69A
@@ -18,8 +20,16 @@ def register(request):
             form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
+            email = form.cleaned_data.get('email')
             user = authenticate(username=username, password=raw_password)
-            messages.success(request, f'New Account Created: {{username}}')
+
+            subject = "Welcome to StockRight, "+str(username)+"!"
+            message = "We hope our simplistic UI helps you manage your portfolio with zero clutter.\nThank you for your business.\n\nHappy Investing!\nStockRight Team"
+            from_email = settings.EMAIL_HOST_USER
+            to_list = [email]
+            send_mail(subject,message,from_email,to_list)
+
+            messages.success(request, f'Email Sent! New Account Created: {username}')
             login(request, user)
             return redirect('home')
         else:
