@@ -4,7 +4,6 @@
 StockRight is a site that allows users to view stock prices and related news about the stock. Users can also crate an account which allows them to add stocks to thier watchlist and view additional information about the stock. 
 =======
 StockRight is a website that provides live prices, historical data, news articles, etc
-
 It allows users to create an account which allows them to add stocks to thier watchlist and view additional information about the stock.
 
 # Technologies Used
@@ -76,8 +75,8 @@ It allows users to create an account which allows them to add stocks to thier wa
      
 # Step's to run the project locally on your machine
 
-     1. $ git clone https://github.com/rohanpatel711/CMPT350-StockRight.git
-     2. $ cd CMPT350-StockRight/
+     1. $ git clone https://github.com/aksharg/CMPT350-Project-StockRight.git
+     2. $ cd CMPT350-Project-StockRight/
      3. $ source venv/Scripts/activate
      4. $ cd StockRight/
      5. $ python manage.py runserver
